@@ -12,7 +12,7 @@ pub struct IPv4 {
     version_ihl:     u8,
     tos:             u8,
     total_length:    u16,
-    identifier:  u16,
+    identifier:      u16,
     fragment_offset: u16,
     ttl:             u8,
     protocol:        u8,
