@@ -5,7 +5,6 @@ use std::fmt;
 use std::io::Cursor;
 
 #[derive(Debug, PartialEq)]
-#[repr(C)]
 pub struct Udp {
     source:      u16,
     destination: u16,

@@ -23,6 +23,7 @@ impl Default for Icmpv4 {
     }
 }
 
+#[allow(unused_must_use)]
 impl Icmpv4 {
     pub fn new() -> Icmpv4 { Icmpv4::default() }
 
@@ -42,7 +43,6 @@ impl Icmpv4 {
         !(((sum & 0xffff) + (sum >> 16)) & 0xffff) as u16
     }
 
-    #[allow(unused_must_use)]
     pub fn as_bytes(self)-> Vec<u8> {
         let buf: Vec<u8> = Vec::new();
         let mut cursor = Cursor::new(buf);

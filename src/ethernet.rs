@@ -7,7 +7,6 @@ use std::fmt;
 use std::io::{Cursor, Write};
 
 #[derive(Debug, PartialEq)]
-#[repr(C)]
 pub struct Ethernet {
     destination: MacAddress,
     source:      MacAddress,
@@ -28,7 +27,7 @@ impl fmt::Display for Ethernet {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(
             f,
-            "Ethernet(dst: \"{}\", src: \"{}\", type: {:x})",
+            "Ethernet(dst: \"{}\", src: \"{}\", type: 0x{:x})",
             self.destination.to_hex_string(),
             self.source.to_hex_string(),
             self.eth_type
@@ -98,7 +97,7 @@ mod tests_ethernet {
             "Ethernet(\
              dst: \"00:50:d9:b8:de:0d\", \
              src: \"16:2b:f1:4b:09:0c\", \
-             type: 800\
+             type: 0x800\
              )",
             ether_str
         );

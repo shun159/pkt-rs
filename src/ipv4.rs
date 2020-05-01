@@ -7,7 +7,6 @@ use std::net::Ipv4Addr;
 use std::io::{Cursor, Write};
 
 #[derive(Debug, PartialEq)]
-#[repr(C)]
 pub struct IPv4 {
     version_ihl:     u8,
     tos:             u8,
