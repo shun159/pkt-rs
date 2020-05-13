@@ -6,10 +6,10 @@ use std::io::Cursor;
 
 #[derive(Debug, PartialEq)]
 pub struct Udp {
-    source:      u16,
-    destination: u16,
-    length:      u16,
-    checksum:    u16
+    pub source:      u16,
+    pub destination: u16,
+    pub length:      u16,
+    pub checksum:    u16
 }
 
 impl Default for Udp {

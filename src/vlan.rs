@@ -6,8 +6,8 @@ use std::io::Cursor;
 
 #[derive(Debug, PartialEq)]
 pub struct Dot1Q {
-    tpid: u16,
-    tci:  u16
+    pub tpid: u16,
+    pub tci:  u16
 }
 
 impl Default for Dot1Q {

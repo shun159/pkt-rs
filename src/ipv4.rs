@@ -8,17 +8,17 @@ use std::io::{Cursor, Write};
 
 #[derive(Debug, PartialEq)]
 pub struct IPv4 {
-    version_ihl:     u8,
-    tos:             u8,
-    total_length:    u16,
-    identifier:      u16,
-    fragment_offset: u16,
-    ttl:             u8,
-    protocol:        u8,
-    checksum:        u16,
-    source:          Ipv4Addr,
-    destination:     Ipv4Addr,
-    options:         Vec<u8>
+    pub version_ihl:     u8,
+    pub tos:             u8,
+    pub total_length:    u16,
+    pub identifier:      u16,
+    pub fragment_offset: u16,
+    pub ttl:             u8,
+    pub protocol:        u8,
+    pub checksum:        u16,
+    pub source:          Ipv4Addr,
+    pub destination:     Ipv4Addr,
+    pub options:         Vec<u8>
 }
 
 impl Default for IPv4 {

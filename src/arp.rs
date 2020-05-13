@@ -10,15 +10,15 @@ use std::io::{Cursor, Write};
 #[derive(Debug, PartialEq)]
 #[repr(C)]
 pub struct Arp {
-    hardware_type:   u16,
-    protocol_type:   u16,
-    hardware_length: u8,
-    protocol_length: u8,
-    operation:       u16,
-    sha:             MacAddress,
-    spa:             Ipv4Addr,
-    tha:             MacAddress,
-    tpa:             Ipv4Addr
+    pub hardware_type:   u16,
+    pub protocol_type:   u16,
+    pub hardware_length: u8,
+    pub protocol_length: u8,
+    pub operation:       u16,
+    pub sha:             MacAddress,
+    pub spa:             Ipv4Addr,
+    pub tha:             MacAddress,
+    pub tpa:             Ipv4Addr
 }
 
 impl Default for Arp {

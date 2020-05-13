@@ -8,9 +8,9 @@ use std::io::{Cursor, Write};
 
 #[derive(Debug, PartialEq)]
 pub struct Ethernet {
-    destination: MacAddress,
-    source:      MacAddress,
-    eth_type:    u16
+    pub destination: MacAddress,
+    pub source:      MacAddress,
+    pub eth_type:    u16
 }
 
 impl Default for Ethernet {

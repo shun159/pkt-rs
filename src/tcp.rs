@@ -6,24 +6,24 @@ use std::io::{Cursor, Write};
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct Tcp {
-    source:          u16,
-    destination:     u16,
-    sequence:        u32,
-    acknowledgement: u32,
-    data_offset:     u8,
-    ns:  u8,
-    cwr: u8,
-    ece: u8,
-    urg: u8,
-    ack: u8,
-    psh: u8,
-    rst: u8,
-    syn: u8,
-    fin: u8,
-    window_size: u16,
-    checksum:    u16,
-    urgent_ptr:  u16,
-    options: Vec<TcpOption>
+    pub source:          u16,
+    pub destination:     u16,
+    pub sequence:        u32,
+    pub acknowledgement: u32,
+    pub data_offset:     u8,
+    pub ns:  u8,
+    pub cwr: u8,
+    pub ece: u8,
+    pub urg: u8,
+    pub ack: u8,
+    pub psh: u8,
+    pub rst: u8,
+    pub syn: u8,
+    pub fin: u8,
+    pub window_size: u16,
+    pub checksum:    u16,
+    pub urgent_ptr:  u16,
+    pub options: Vec<TcpOption>
 }
 
 #[allow(unused_must_use)]

@@ -6,10 +6,10 @@ use std::io::{Cursor, Write};
 
 #[derive(Debug, PartialEq)]
 pub struct Icmpv4 {
-    icmp_code: u8,
-    icmp_type: u8,
-    checksum:  u16,
-    payload:   Vec<u8>
+    pub icmp_code: u8,
+    pub icmp_type: u8,
+    pub checksum:  u16,
+    pub payload:   Vec<u8>
 }
 
 impl Default for Icmpv4 {
