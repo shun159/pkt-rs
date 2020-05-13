@@ -26,6 +26,7 @@ use std::result::Result;
 pub enum Packet {
     ETHER(Ethernet),
     ARP(Arp),
+    GRE(Gre),
     VLAN(Dot1Q),
     IPv4(IPv4),
     ICMP4(Icmpv4),
@@ -57,14 +58,17 @@ impl Packet {
         let result: Result<(&[u8], Packet), &[u8]> = match pkt.last().unwrap() {
             // ETH_P_ARP
             Packet::ETHER(Ethernet{ eth_type: 0x0806, .. }) |
+            Packet::GRE(Gre{ protocol: 0x0806, .. }) |
             Packet::VLAN(Dot1Q{ tpid: 0x0806, .. }) =>
                 Self::parse_arp(bytes),
             // ETH_P_802_1Q
             Packet::ETHER(Ethernet{ eth_type: 0x8100, .. }) |
+            Packet::GRE(Gre{ protocol: 0x8100, .. }) |
             Packet::VLAN(Dot1Q{ tpid: 0x8100, .. }) =>
                 Self::parse_vlan(bytes),
             // ETH_P_IP
             Packet::ETHER(Ethernet{ eth_type: 0x0800, .. }) |
+            Packet::GRE(Gre{ protocol: 0x0800, .. }) |
             Packet::VLAN(Dot1Q{ tpid: 0x0800, .. }) =>
                 Self::parse_ip4(bytes),
             // IPPROTO_ICMP
@@ -76,6 +80,9 @@ impl Packet {
             // IPPROTO_TCP
             Packet::IPv4(IPv4{ protocol: 17, .. }) =>
                 Self::parse_udp(bytes),
+            // IPPROTO_GRE
+            Packet::IPv4(IPv4{ protocol: 47, .. }) =>
+                Self::parse_gre(bytes),
             // Other
             _other => {
                 let packet = Packet::Payload(bytes.to_vec());
@@ -175,6 +182,18 @@ impl Packet {
                 return Result::Err(bytes),
             Ok((leftover, udp)) => {
                 let pkt = Packet::UDP(udp);
+                return Result::Ok((leftover, pkt))
+            }
+        }
+    }
+
+    // Parse GRE Header
+    fn parse_gre(bytes: &[u8]) -> Result<(&[u8], Packet), &[u8]> {
+        match Gre::from_bytes(bytes) {
+            Err(_e) =>
+                return Result::Err(bytes),
+            Ok((leftover, gre)) => {
+                let pkt = Packet::GRE(gre);
                 return Result::Ok((leftover, pkt))
             }
         }
