@@ -4,6 +4,7 @@ extern crate nom;
 
 pub mod arp;
 pub mod ethernet;
+pub mod gre;
 pub mod ipv4;
 pub mod icmpv4;
 pub mod udp;
@@ -12,6 +13,7 @@ pub mod vlan;
 
 use arp::Arp;
 use ethernet::Ethernet;
+use gre::Gre;
 use icmpv4::Icmpv4;
 use ipv4::IPv4;
 use udp::Udp;
@@ -221,7 +223,8 @@ mod tests_pkt {
                     tci: 100
                 }),
                 VLAN(Dot1Q {
-                    tpid: 2054, tci: 200
+                    tpid: 2054,
+                    tci: 200
                 }),
                 ARP(Arp {
                     hardware_type: 1,

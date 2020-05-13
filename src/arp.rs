@@ -8,7 +8,6 @@ use std::fmt;
 use std::io::{Cursor, Write};
 
 #[derive(Debug, PartialEq)]
-#[repr(C)]
 pub struct Arp {
     pub hardware_type:   u16,
     pub protocol_type:   u16,
