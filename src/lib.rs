@@ -10,6 +10,7 @@ pub mod icmpv4;
 pub mod udp;
 pub mod tcp;
 pub mod vlan;
+pub mod vxlan;
 
 use arp::Arp;
 use ethernet::Ethernet;
